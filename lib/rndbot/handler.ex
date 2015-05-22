@@ -16,7 +16,7 @@
 # along with RndBot.  If not, see <http://www.gnu.org/licenses/>.
 
 defmodule RndBot.Handler do
-  def handle_privmsg(socket, [_, nick, user, ip, msg]) do
+  def handle_privmsg(socket, [_, nick, user, ip, bot_nick, msg]) do
     IO.puts "#{nick}: #{msg}"
     case Enum.find(rand_regex_fns(), fn {regex, _} -> Regex.run(regex, msg) end) do
       {regex, fun} ->
@@ -57,7 +57,7 @@ defmodule RndBot.Handler do
   end
   
   def handle_irc_message(socket, message) do
-    privmsg = ~r/:([^!]+)!~([^@]+)@([^\s]+)\sPRIVMSG\srndbotrnd\s:(.+)/
+    privmsg = ~r/:([^!]+)!~([^@]+)@([^\s]+)\sPRIVMSG\s([^\#\s]+)\s:(.+)/
     chanmsg = ~r/:([^!]+)!~([^@]+)@([^\s]+)\sPRIVMSG\s\#([^\s]+)\s:(.+)/
     ping = ~r/PING :\s(.+)/
 
