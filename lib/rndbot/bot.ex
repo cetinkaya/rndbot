@@ -7,9 +7,8 @@ defmodule RndBot.Bot do
     bot_serve(socket)
   end
 
-  def start do
-    {:ok, socket} = RndBot.Irc.connect('chat.freenode.net', 6667)
-    nick = "rndbotrnd"
+  def start(server \\ "chat.freenode.net", nick \\ "rndbotrnd") do
+    {:ok, socket} = RndBot.Irc.connect(server, 6667)
     RndBot.Irc.isend(socket, "NICK #{nick}")
     RndBot.Irc.isend(socket, "USER #{nick} * * :#{nick}")
     RndBot.Irc.isend(socket, "JOIN #rndbottest")
