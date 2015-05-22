@@ -3,22 +3,22 @@ RndBot
 
 RndBot is an IRC bot that provides positive random numbers as replies to messages containing the text "rndbotrnd". The random numbers are obtained from random.org. 
 
-### How to start the bot
+### How to install and start the bot
 
-It seems that the current easiest way is to first clone the repository with
+It seems that the current easiest way of installation is cloning the repository:
 
 ```
 git clone https://github.com/cetinkaya/rndbot.git
 ```
 
-Then we install dependencies with
+After that we need to install the dependencies with Mix (which comes with Elixir):
 
 ```
 cd rndbot
 mix deps.get
 ````
 
-After that we can start the program in iex. To this end, first start iex:
+We can then start the program in iex. To do that, first start iex:
 
 ```
 iex -S mix
@@ -36,6 +36,6 @@ Currently the bot automatically connects to chat.freenode.net and joins the chan
 send bot, {:cmd, {:join, "otherchannel"}}
 ```
 
-### What does rndbot do?
+### What does RndBot do?
 
 It provides random integers for a given range. For instance, when it sees a message "rndbotrnd 1-100", it returns a random integer (obtained from random.org) within the interval [1,100]. 
