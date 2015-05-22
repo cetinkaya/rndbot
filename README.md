@@ -30,7 +30,7 @@ Then in iex, we start the bot with:
 iex> bot = RndBot.Bot.start
 ```
 
-Currently the bot automatically connects to chat.freenode.net and joins the channel #rndbottest. Commands can be sent to the bot inside iex to make it join other channels:
+If server and nick are not specified (as RndBot.Bot.start("server", "nick")), the bot automatically connects to chat.freenode.net and takes the nick rndbotrnd. After connection, the bot automatically joins the channel #rndbottest. Commands can be sent to the bot inside iex to make it join other channels as well:
 
 ```
 send bot, {:cmd, {:join, "otherchannel"}}
