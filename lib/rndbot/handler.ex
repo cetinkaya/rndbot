@@ -42,7 +42,7 @@ defmodule RndBot.Handler do
   def handle_irc_message(socket, message) do
     privmsg = ~r/:([^!]+)!~([^@]+)@([^\s]+)\sPRIVMSG\srndbotrnd\s:(.+)/
     chanmsg = ~r/:([^!]+)!~([^@]+)@([^\s]+)\sPRIVMSG\s\#([^\s]+)\s:(.+)/
-    ping = ~r/PING:\s(.+)/
+    ping = ~r/PING :\s(.+)/
 
     regex_fns = [{privmsg, &(handle_privmsg(socket, &1))},
                  {chanmsg, &(handle_chanmsg(socket, &1))},
