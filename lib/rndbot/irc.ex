@@ -1,6 +1,6 @@
 defmodule RndBot.Irc do
   def connect(server, port) do
-    :gen_tcp.connect(server, port, [packet: 0, active: false])
+    :gen_tcp.connect(to_char_list(server), port, [packet: 0, active: false])
   end
 
   def isend(socket, msg) do
