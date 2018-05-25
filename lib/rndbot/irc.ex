@@ -17,11 +17,11 @@
 
 defmodule RndBot.Irc do
   def connect(server, port) do
-    :gen_tcp.connect(to_char_list(server), port, [packet: 0, active: false])
+    :gen_tcp.connect(to_charlist(server), port, [packet: 0, active: false])
   end
 
   def isend(socket, msg) do
-    :gen_tcp.send(socket, to_char_list(msg <> "\r\n"))
+    :gen_tcp.send(socket, to_charlist(msg <> "\r\n"))
   end
 
   def irecv(socket) do
