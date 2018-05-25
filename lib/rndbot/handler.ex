@@ -16,7 +16,7 @@
 # along with RndBot.  If not, see <http://www.gnu.org/licenses/>.
 
 defmodule RndBot.Handler do
-  def handle_privmsg(socket, [_, nick, user, ip, bot_nick, msg]) do
+  def handle_privmsg(socket, [_, nick, _user, _ip, _bot_nick, msg]) do
     IO.puts "#{nick}: #{msg}"
     case Enum.find(rand_regex_fns(), fn {regex, _} -> Regex.run(regex, msg) end) do
       {regex, fun} ->
@@ -45,7 +45,7 @@ defmodule RndBot.Handler do
       end}]
   end
 
-  def handle_chanmsg(socket, [_, nick, user, ip, channel, msg]) do
+  def handle_chanmsg(socket, [_, nick, _user, _ip, channel, msg]) do
     IO.puts "#{nick}@\##{channel}: #{msg}"
     case Enum.find(rand_regex_fns(), fn {regex, _} -> Regex.run(regex, msg) end) do
       {regex, fun} ->
