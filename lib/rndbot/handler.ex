@@ -23,7 +23,7 @@ defmodule RndBot.Handler do
         res = Regex.run(regex, msg)
         rn = fun.(res)
         (rn |> to_string()) |> (&(RndBot.Irc.privmsg(socket, nick, &1))).()
-      _ ->
+      _ -> nil
     end
   end
 
@@ -52,7 +52,7 @@ defmodule RndBot.Handler do
         res = Regex.run(regex, msg)
         rn = fun.(res)
         ("#{nick}: " <> (rn |> to_string())) |> (&(RndBot.Irc.chanmsg(socket, channel, &1))).()
-      _ ->
+      _ -> nil
     end
   end
   
@@ -84,7 +84,7 @@ defmodule RndBot.Handler do
         RndBot.Irc.join(socket, chan)
       {:part, chan} ->
         RndBot.Irc.part(socket, chan)
-      _ ->
+      _ -> nil
         IO.puts "Unknown command!"
     end
   end
