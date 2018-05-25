@@ -43,7 +43,7 @@ defmodule RndBot.Irc do
   def irecv_serve(socket, bot_server) do
     case irecv(socket) do
       {:ok, packet} -> 
-        send(bot_server, {:irc, String.strip(to_string(packet))})
+        send(bot_server, {:irc, String.trim(to_string(packet))})
         irecv_serve(socket, bot_server)
       {:error, _} -> IO.puts "Error in irecv."
     end

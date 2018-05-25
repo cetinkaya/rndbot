@@ -23,7 +23,7 @@ defmodule RndBot.Random do
                {:ok, _, _, c} ->
                  case :hackney.body(c) do
                    {:ok, body} ->
-                     {n, _} = (body |> String.strip() |> Integer.parse())
+                     {n, _} = (body |> String.trim() |> Integer.parse())
                      n
                    _ -> -1
                  end
